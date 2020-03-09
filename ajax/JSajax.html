@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script type="text/javascript">
+		var a = document.getElementById('but')//.onclick = function(){
+		console.log(a)
+		//}
+	</script> -->
+</head>
+<body>
+	<h3 id="title"></h3>
+	<button id="but">提交</button>
+	<script type="text/javascript">
+		document.getElementById('but').onclick = function(){
+			//创建一个异步对象
+			let xml = new XMLHttpRequest()
+			//请求行 方式，地址
+			xml.open('get','php/Get_jsajax.php?name=jack&value=abc')
+			xml.onload = function(){
+				alert(xml.responseText)
+				document.getElementById('title').innerHTML = xml.responseText
+			}
+			//get方式下可以省略，设置请求头的操作
+			//xml.setRequestHeader(键，值)
+
+			//请求主体 发送
+			xml.send(null)
+			
+
+
+		}
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板引擎实现原理</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+
+<script id='template' type="text/html">
+	<!-- 这里面注释没有用，他会当字符串加进去 -->
+<!-- 设置模板id 设置代码不被js解析 模板样式-->
+<ul>
+	{{if male=='男'}}
+	<li>欢迎您 {{name}} 男士</li>
+	<li>{{age}}</li>
+	<li>{{male}}</li>
+	<li>{{@info}}</li>
+	{{each brother}}
+	<li>{{$index}}--{{$value}}</li>
+	{{/each}}
+	
+
+	{{else if male=='女'}}
+	<li>欢迎您 {{name}} 女士</li>
+	<li>{{age}}</li>
+	<li>{{male}}</li>
+	<li>{{@info}}</li>
+	{{/if}}
+</ul>
+</script>
+<script type="text/javascript" src="../ajax/js/my_templates.js"></script>
+<script type="text/javascript" src="template-web.js"></script>
+<script>
+	/*
+	模板引擎 template(模板id，数据)返回的是字符串
+	
+	模板引擎原理
+	通过模板id获取模板的内容就是返回的字符串
+	调用方式时
+	找到字符串中特殊的符号{{name}}
+	使用对象对应的属性进行替换
+	返回字符串
+	
+
+    假数据
+	
+	var data = {
+		name:'小东',
+		age:18,
+		mate:'男'
+	}
+	获取模板
+	var str = document.querySelector('#template').innerHTML
+	var str = '我是{{name}},我{{age}}岁了'
+	var re = /{{(\w+)}}/;
+	var result = re.exec(str)
+	while(result){
+		str = str.replace(result[0],data[result[1]])
+		重新检索重置result
+		result = re.exec(str)
+		console.log(str)
+	}
+
+	console.log(re.test(str))
+	console.log(re.exec(str))
+	*/
+
+	//使用自己封装的模板引擎
+	var data = {
+		name:'小东',
+		age:18,
+		male:'男',
+		brother:[
+		'二娃',
+		'三娃',
+		'四娃',
+		'五娃'
+		],
+		info:'<a href="https://www.baidu.com">小东</a>'
+	}
+	var data2 = {
+		name:'小胖',
+		age:18,
+		male:'女',
+		brother:[
+		'二娃',
+		'三娃',
+		'四娃',
+		'五娃'
+		],
+		info:'<a href="https://www.xinlang.com">小胖</a>'
+	}
+	/*var resultString = my_template('template',data)
+	console.log(resultString);*/
+	
+
+	
+	var resultString = template('template',data)
+	document.body.innerHTML = resultString
+
+</script> 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/ajax_js.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.querySelector('button').onclick = function(){
+				ajax({
+					url:'json/json.php',
+					type:'get',
+					data:'',
+					success:function(data){
+						console.log(data.name)
+						console.log(data.age)
+					}
+					
+				});
+				ajax({
+					url:'xml/lianxi.xml',
+					type:'post',
+					data:'',
+					success:function(data){
+						console.log(data)
+						document.body.innerHTML = data.querySelector('age').innerHTML
+					}
+				});
+			}
+			
+
+			
+
+			
+		}
+		
+	</script>
+</head>
+<body>
+	<input type="text" name="" class="txt">
+	<button>提交</button>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		li{
+			border:1px solid #cdcdcd;
+			height: 100px;
+			display: none;
+		}
+		
+
+		.box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			overflow: scroll;
+
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.but').click(function(){
+				
+				var $txt = $('.txt').val();
+				
+				//alert($('.txt').val())
+
+				//clone()复制方法
+				var $a = $('.list li').first().clone();
+
+				$('.list').append($a);
+				$a.show();
+				$a.html($txt);
+
+                 //http://openapi.tuling123.com/openapi/api/v2
+				 var xml = new XMLHttpRequest();
+				 xml.open('post','http://openapi.tuling123.com/openapi/api/v2');
+				 xml.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				 xml.onload=function(){
+				 	console.log(xml.responseText)
+				 	var $ab = $('.list li').first().clone();
+				 	$('.list').append($ab);
+					$ab.show();
+					$ab.html(xml.responseText);
+					
+
+
+				 }
+				 xml.send('key=d448d255507644da94ff7bd8d0a960c9&info='+$txt)
+				 //xml.send('key='+$txt)
+
+				
+
+
+			})
+
+
+		})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="list">
+			<li></li>
+		</ul>
+	</div>
+	<input type="text" name="" class="txt">
+	<button class="but">发送</button>
+
+
+	
+</body>
+</html>

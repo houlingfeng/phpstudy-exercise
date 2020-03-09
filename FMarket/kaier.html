@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>凯尔</title>
+	<style type="text/css">
+		div{
+			border: 1px solid #000;
+			width: 500px;
+		}
+	</style>
+	<script type="text/javascript">
+    	window.onload = function(){
+
+    		document.querySelector('button').onclick = function(){
+    			//console.log('可以')
+    			var jn = new XMLHttpRequest();
+	    		jn.open('get','get-lol.php');
+	    		jn.onreadystatechange=function(){
+	    			if (jn.readyState==4&&jn.status==200) {
+	    				var json = JSON.parse(jn.responseText);
+	    				var html = '';
+	    				//console.log( json.skins.length)
+	    				for (var i = 0; i < json.skins.length; i++) {
+
+	    					var tat = json.skins[i].name;
+	    					var imgs = json.skins[i].loadingImg;
+	    					var imgs2 = json.skins[i].chromaImg;
+	    					
+	    					html+='<p>'+tat+'</p>';
+	    					html+='<img src='+imgs+'>';
+	    					html+='<img src='+imgs2+'>';
+	    				}
+	    				document.querySelector('div').innerHTML=html;
+	    				
+	    			}
+	    			
+	    		} 
+	    		jn.send(null)
+    		}
+    		
+    	}
+    </script>
+</head>
+<body>
+	<button>凯尔</button>
+	<div></div>
+	
+	
+</body>
+</html>
+<!-- skinId: "10000"
+heroId: "10"
+heroName: "正义天使"
+heroTitle: "凯尔"
+name: "正义天使"
+chromas: "0"
+chromasBelongId: "0"
+isBase: "1"
+emblemsName: "base"
+description: ""
+mainImg: "https://game.gtimg.cn/images/lol/act/img/skin/big10000.jpg"
+iconImg: "https://game.gtimg.cn/images/lol/act/img/skin/small10000.jpg"
+loadingImg: "https://game.gtimg.cn/images/lol/act/img/skinloading/10000.jpg"
+videoImg: "https://game.gtimg.cn/images/lol/act/img/skinvideo/sp10000.jpg"
+sourceImg: "https://game.gtimg.cn/images/lol/act/img/guidetop/guide10000.jpg"
+vedioPath: ""
+suitType: ""
+publishTime: ""
+chromaImg: "" -->

@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.6ed10ddcbb076232a11ea5d72382d6d8.css"],"names":[],"mappings":"AACA,MACC,WAAW,CACX,YACD,CAEA,KACC,SAAU,CACV,cACD","file":"app.6ed10ddcbb076232a11ea5d72382d6d8.css","sourcesContent":["\n.logo{\n\twidth:200px;\n\theight:200px;\n}\n\n.msg{\n\tcolor: red;\n\tfont-size: 30px;\n}\n"]}

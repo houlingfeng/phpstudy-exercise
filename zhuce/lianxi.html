@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.inp').click(function(){
+				
+				var $text = $('.text').val()
+				
+				
+				$.ajax({
+					url:'PHP/rest.php',
+					data: $text,
+					success:function(data){
+						alert(data)
+					},
+					error:function(){
+						alert('失败')
+					},
+					complete:function(){
+						alert('完成')
+					}
+				})
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type="text" name="" class="text">
+	<input type="button" name="" value='提交' class="inp">
+</body>
+</html>
